@@ -4,3 +4,7 @@ export const Wrapper = styled.header`
   height:50px;
   background-color:red;
 `
+export const MenuButton = styled.button`
+  color:black;
+  
+`
