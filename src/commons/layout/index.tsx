@@ -10,9 +10,9 @@ const Layout = (props:ILayoutProps)=>{
     <>
       <LayoutHeader/>
       <LayoutNavigation/>
-      <main>
+      <div>
         {props.children}
-      </main>
+      </div>
       <LayoutFooter/>
     </>
   );
