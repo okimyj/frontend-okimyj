@@ -3,8 +3,7 @@ import { HamburgerButton, MenuItem, MenuItemWrapper, Wrapper } from "./HeaderNav
 import Hamburger_MD from "@/public/icons/Hamburger_MD.svg";
 const MENUS = [
   { name: "About Me", page: "" },
-  { name: "Skills", page: "" },
-  { name: "Career", page: "" },
+  { name: "Work", page: "" },
   { name: "Marie's Gallery", page: "" },
 ];
 const HeaderNavigation = () => {

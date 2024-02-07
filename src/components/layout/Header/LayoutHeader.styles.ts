@@ -25,6 +25,7 @@ export const HeadLogo = styled.button`
   background-color: transparent;
   border: none;
   font-weight: bold;
+
   font-size: ${theme.fontSizes.l};
   opacity: 0.4;
   :hover {

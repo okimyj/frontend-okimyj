@@ -39,6 +39,6 @@ export const SKILL_TYPE_INFOS: ISkillTypeInfos = {
   ugui: { name: "UGUI", color: "#494848", fontColor: "#fff" },
   ngui: { name: "NGUI", color: "#494848", fontColor: "#fff" },
   trid: { name: "Tri-d", color: "#494848", fontColor: "#fff" },
-  lua: { name: "Lua", color: "#E2D935", fontColor: "#fff" },
+  lua: { name: "Lua Script", color: "#E2D935", fontColor: "#fff" },
   jquery: { name: "JQuery", icon: "icon_jquery.svg", color: "#fff" },
 };

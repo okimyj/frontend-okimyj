@@ -21,6 +21,7 @@ interface ColorTheme {
   secondary: string;
   tertiary: string;
   background: string;
+  list_background: string;
 }
 export const theme: Theme = {
   fontSizes: {
@@ -34,10 +35,11 @@ export const theme: Theme = {
   colors: {
     black: "#000",
     white: "#fff",
-    primary: "#4B0082",
+    primary: "#967d52",
     secondary: "#DFD5C4",
-    tertiary: "#967d52",
+    tertiary: "#BDAA89",
     background: "#CFC1A8",
+    list_background: "#FFFFFF",
     // background: "#ff0000",
   },
 };

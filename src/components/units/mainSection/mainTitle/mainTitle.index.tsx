@@ -13,13 +13,12 @@ export default function MainTitle() {
           height={1000}
           priority={true}
         />
+        <TitleLogo>
+          OKIMYJ
+          <br />
+          FrontEnd Developer
+        </TitleLogo>
       </TitleImageWrapper>
-
-      <TitleLogo>
-        OKIMYJ
-        <br />
-        FrontEnd Developer
-      </TitleLogo>
     </Wrapper>
   );
 }

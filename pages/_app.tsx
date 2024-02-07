@@ -5,7 +5,6 @@ import { globalStyles } from "../src/styles/globalStyles";
 import Layout from "@/src/components/layout";
 import { theme } from "@/src/styles/theme";
 import Head from "next/head";
-
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <RecoilRoot>

@@ -1,3 +1,4 @@
+import { rem } from "@/src/styles/common";
 import { theme } from "@/src/styles/theme";
 import styled from "@emotion/styled";
 
@@ -6,7 +7,7 @@ export const Wrapper = styled.div`
 `;
 export const TitleImageWrapper = styled.div`
   position: relative;
-  width: 100%;
+  max-height: 100vh;
   height: fit-content;
   img {
     width: 100%;
@@ -34,6 +35,13 @@ export const GradientRect = styled.div`
 `;
 
 export const TitleLogo = styled.div`
+  position: absolute;
+  bottom: ${rem(20)};
   font-size: ${theme.fontSizes.title};
   font-weight: bold;
+  color: ${theme.colors.primary};
+  z-index: 1;
+  @media only screen and (max-width: 640px) {
+    font-size: calc(${theme.fontSizes.title} / 2);
+  }
 `;

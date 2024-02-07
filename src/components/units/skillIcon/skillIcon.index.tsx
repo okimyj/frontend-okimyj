@@ -24,11 +24,12 @@ const SkillIcon = ({ name, size = 50 }: ISkillIconProps) => {
 };
 
 const Wrapper = styled.div<{ size: number }>`
-  width: ${(props) => rem(props.size)};
-  margin-left: ${rem(10)};
+  margin-right: ${rem(10)};
 `;
 const TextIcon = styled.div<{ size: number; bgColor: string; fontColor: string }>`
-  width: ${(props) => rem(props.size)};
+  /* width: ${(props) => rem(props.size)}; */
+  width: fit-content;
+  padding: 0 ${rem(10)};
   color: ${(props) => props.fontColor};
   background-color: ${(props) => props.bgColor};
   border-radius: ${rem(15)};
