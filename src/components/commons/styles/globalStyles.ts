@@ -1,10 +1,6 @@
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
 import { theme } from "./theme";
-
-export const SCREEN_WIDTH_MAX = 1200;
-export const SCREEN_WIDTH_MIN = 360;
-
 export const globalStyles = css`
   @import url("https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap");
   @font-face {

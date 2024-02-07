@@ -1,7 +1,6 @@
 import Head from "next/head";
 import LayoutFooter from "./Footer/LayoutFooter.index";
 import LayoutHeader from "./Header/LayoutHeader.index";
-import HeaderNavigation from "./Header/Navigation/HeaderNavigation.index";
 import LayoutMain from "./Main/LayoutMain.index";
 interface ILayoutProps {
   children: JSX.Element | JSX.Element[];

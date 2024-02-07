@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
-import { rem } from "../../../../styles/common";
-import { theme } from "../../../../styles/theme";
+import { rem } from "../../../styles/common";
+import { theme } from "../../../styles/theme";
 export const Wrapper = styled.nav`
   display: flex;
   /* background-color: ${theme.colors.primary}; */

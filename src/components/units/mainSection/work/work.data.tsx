@@ -8,7 +8,7 @@ export const WORK_CARD_DATA: IWorkCard[] = [
       {
         name: "마이룸",
         period: "2023/01 ~ 2023/12",
-        skills: ["react", "ts", "react", "html5", "css"],
+        skills: ["react", "ts", "reactQuery", "html5", "css"],
         description:
           "3D Web베이스의 아바타와 마이룸을 활용한 심플 SNS서비스\n로그인, 회원가입, 방명록, 설정 페이지등 기능 개발 및 퍼블리싱, API 연동",
       },

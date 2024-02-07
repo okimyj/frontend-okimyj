@@ -1,27 +1,22 @@
-import { Global, ThemeProvider } from "@emotion/react";
 import type { AppProps } from "next/app";
 import { RecoilRoot } from "recoil";
-import { globalStyles } from "../src/styles/globalStyles";
-import Layout from "@/src/components/layout";
-import { theme } from "@/src/styles/theme";
+
+import Layout from "@/src/components/commons/layout";
+
 import Head from "next/head";
+import Settings from "@/src/components/commons/settings";
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <RecoilRoot>
-      <ThemeProvider theme={theme}>
-        {/* <link
-          href="https://fonts.googleapis.com/css2?family=Gowun+Dodum:wght@100;400;500;700;800&display=swap"
-          rel="stylesheet"
-        /> */}
-        <Global styles={globalStyles} />
-        <Head>
-          <title>OKIMYJ::Frontend Developer</title>
-          <meta name="description" content="Frontend Developer Portfolio" />
-        </Head>
+    <>
+      <Head>
+        <title>OKIMYJ::Frontend Developer</title>
+        <meta name="description" content="Frontend Developer Portfolio" />
+      </Head>
+      <Settings>
         <Layout>
           <Component {...pageProps} />
         </Layout>
-      </ThemeProvider>
-    </RecoilRoot>
+      </Settings>
+    </>
   );
 }

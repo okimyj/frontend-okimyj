@@ -1,16 +1,16 @@
-import { rem } from "@/src/styles/common";
-import { SCREEN_WIDTH_MAX } from "@/src/styles/globalStyles";
-import { theme } from "@/src/styles/theme";
+import { HEADER_HEIGHT, rem } from "@/src/components/commons/styles/common";
+import { SCREEN_WIDTH_MAX } from "@/src/components/commons/styles/common";
+import { theme } from "@/src/components/commons/styles/theme";
 import styled from "@emotion/styled";
 export const Wrapper = styled.header`
   position: fixed;
   top: 0;
   width: 100vw;
-  height: ${rem(80)};
+  height: ${rem(HEADER_HEIGHT)};
   padding: ${rem(30)};
   display: flex;
   justify-content: center;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.5);
   z-index: 1;
   box-shadow: ${theme.colors.tertiary} 0px ${rem(1)} ${rem(8)};
 `;

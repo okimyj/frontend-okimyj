@@ -1,4 +1,4 @@
-import { rem } from "@/src/styles/common";
+import { rem } from "@/src/components/commons/styles/common";
 import { SKILL_TYPE_INFOS } from "./skillIcon.types";
 import styled from "@emotion/styled";
 import Image from "next/image";
