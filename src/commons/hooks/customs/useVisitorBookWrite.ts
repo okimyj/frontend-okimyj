@@ -1,15 +1,17 @@
 import useFirebaseStore from "./useFirebaseStore";
-import { IVisitBookWriteFormData } from "../../types/customTypes";
+import { IVisitorBookWriteFormData } from "../../types/customTypes";
 
 const STORE_PATH = "visitBook";
 const useVisitorBookWrite = () => {
-  const { addDoc } = useFirebaseStore();
+  const { firebaseAddDoc } = useFirebaseStore();
 
-  const onClickSubmit = (data: IVisitBookWriteFormData) => {
+  const onClickSubmit = (callback?: () => void) => (data: IVisitorBookWriteFormData) => {
     if (typeof window !== "undefined") {
-      void addDoc(STORE_PATH, {
+      firebaseAddDoc(STORE_PATH, {
         ...data,
         createdAt: Date.now().toString(),
+      }).then(() => {
+        callback?.();
       });
     }
   };

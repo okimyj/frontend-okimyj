@@ -9,7 +9,6 @@ interface ISkillIconProps {
 }
 const SkillIcon = ({ name, size = 50 }: ISkillIconProps) => {
   const iconData = SKILL_TYPE_INFOS[name];
-  console.log("SkillIcon - name : ", name, " iconData : ", iconData);
   return (
     <Wrapper size={size}>
       {iconData && iconData.icon ? (

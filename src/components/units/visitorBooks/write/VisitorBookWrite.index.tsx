@@ -1,25 +1,39 @@
-import useVisitorBookWrite from "@/src/commons/hooks/customs/useVisitorBookWrite";
-import { IVisitBookWriteFormData } from "@/src/commons/types/customTypes";
 import dynamic from "next/dynamic";
+import useVisitorBookWrite from "@/src/commons/hooks/customs/useVisitorBookWrite";
+import { IVisitorBookWriteFormData } from "@/src/commons/types/customTypes";
 import { useForm } from "react-hook-form";
+import { Input, SummitButton, FormWrapper } from "./VisitorBookWrite.styles";
+
 const ReactQuill = dynamic(async () => await import("react-quill"), { ssr: false });
 import "react-quill/dist/quill.snow.css";
-import { Input, Wrapper } from "./VisitorBookWrite.styles";
+import { useEffect, useState } from "react";
 
 const VisitorBookWrite = () => {
-  const { register, setValue, trigger, handleSubmit } = useForm<IVisitBookWriteFormData>();
   const { onClickSubmit } = useVisitorBookWrite();
-  const onChangeContents = (value: string): void => {
-    setValue("contents", value === "<p><br></p>" ? "" : value);
+  const { register, reset, setValue, trigger, handleSubmit } = useForm<IVisitorBookWriteFormData>();
+  const [contents, setContents] = useState<string>("");
+
+  useEffect(() => {
+    setValue("contents", contents === "<p><br></p>" ? "" : contents);
     void trigger("contents");
+  }, [contents]);
+
+  const onChangeContents = (value: string): void => {
+    setContents(value);
   };
+
+  const resetFields = () => {
+    reset();
+    setContents("");
+  };
+
   return (
-    <Wrapper onSubmit={handleSubmit(onClickSubmit)}>
+    <FormWrapper onSubmit={handleSubmit(onClickSubmit(resetFields))}>
       writer <Input {...register("writer")} />
-      password <Input {...register("title")} />
-      <ReactQuill onChange={onChangeContents}></ReactQuill>
-      <button>Submit</button>
-    </Wrapper>
+      password <Input type="password" {...register("password")} />
+      <ReactQuill onChange={onChangeContents} value={contents}></ReactQuill>
+      <SummitButton>Submit</SummitButton>
+    </FormWrapper>
   );
 };
 

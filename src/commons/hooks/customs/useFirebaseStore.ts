@@ -1,70 +1,53 @@
 import {
   DocumentData,
   WithFieldValue,
-  addDoc as firebaseAddDoc,
-  getDocs as firebaseGetDocs,
+  addDoc,
+  getDocs,
   collection,
   getFirestore,
-  query as firebaseQuery,
+  query,
   onSnapshot,
   QuerySnapshot,
-  Query,
-  where,
-  orderBy,
-  query,
-  QueryConstraint,
   QueryOrderByConstraint,
   QueryCompositeFilterConstraint,
 } from "firebase/firestore";
 import firebaseApp from "../../libraries/firebase/firebaseApp";
 
 const useFirebaseStore = () => {
-  const addDoc = async (storePath: string, data: WithFieldValue<DocumentData>) => {
-    if (!firebaseApp) return;
-    return await firebaseAddDoc(collection(getFirestore(firebaseApp), storePath), data);
+  const getCollection = (storePath: string) => collection(getFirestore(firebaseApp), storePath);
+  const firebaseAddDoc = async (storePath: string, data: WithFieldValue<DocumentData>) => {
+    return await addDoc(getCollection(storePath), data);
   };
-  const getDocsOnSnapshot = async (
-    query: Query<DocumentData, DocumentData>,
-    callback: (snapshot: QuerySnapshot<DocumentData, DocumentData>) => void
-  ) => {
-    if (!firebaseApp) return;
-    const q = firebaseQuery(query);
-    await onSnapshot(q, (querySnapshot) => {
-      // querySnapshot.forEach((doc) => console.log(doc.id, " // ", doc.data()));
-      callback(querySnapshot);
-    });
-  };
-  const getDocs = async (
+
+  const firebaseGetDocsRealtime = async (
     storePath: string,
     orderBy: QueryOrderByConstraint | null,
     compositeFilter: QueryCompositeFilterConstraint | null,
     callback?: (snapshot: QuerySnapshot<DocumentData, DocumentData>) => void
   ) => {
-    if (!firebaseApp) return;
+    const collection = getCollection(storePath);
     try {
       const q =
         compositeFilter && orderBy
-          ? firebaseQuery(collection(getFirestore(firebaseApp), storePath), compositeFilter, orderBy)
+          ? query(collection, compositeFilter, orderBy)
           : compositeFilter
-          ? firebaseQuery(collection(getFirestore(firebaseApp), storePath), compositeFilter)
+          ? query(collection, compositeFilter)
           : orderBy
-          ? firebaseQuery(collection(getFirestore(firebaseApp), storePath), orderBy)
-          : firebaseQuery(collection(getFirestore(firebaseApp), storePath));
+          ? query(collection, orderBy)
+          : query(collection);
 
       await onSnapshot(q, (querySnapshot) => {
-        // querySnapshot.forEach((doc) => console.log(doc.id, " // ", doc.data()));
         callback?.(querySnapshot);
       });
     } catch (error) {
       console.log(error);
     }
   };
-  const getCollection = (storePath: string) => (firebaseApp ? collection(getFirestore(firebaseApp), storePath) : null);
-  const getDocs_legacy = async (storePath: string) => {
+  const firebaseGetDocs = async (storePath: string) => {
     if (!firebaseApp) return;
     try {
       const q = query(collection(getFirestore(firebaseApp), storePath));
-      const snapshot = await firebaseGetDocs(q);
+      const snapshot = await getDocs(q);
       snapshot.forEach((doc) => console.log(doc.id, " // ", doc.data()));
       return snapshot;
     } catch (error) {
@@ -72,6 +55,6 @@ const useFirebaseStore = () => {
     }
   };
 
-  return { getCollection, addDoc, getDocs, getDocsOnSnapshot };
+  return { getCollection, firebaseAddDoc, firebaseGetDocs, firebaseGetDocsRealtime };
 };
 export default useFirebaseStore;

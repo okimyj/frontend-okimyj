@@ -1,22 +1,21 @@
 import { useEffect, useState } from "react";
-import { IVisitBook } from "../../types/customTypes";
-import useFirebaseStore from "./useFirebaseStore";
+import { IVisitorBook } from "../../types/customTypes";
 import { orderBy } from "firebase/firestore";
+import useFirebaseStore from "./useFirebaseStore";
 
 const STORE_PATH = "visitBook";
 const useVisitorBooks = () => {
-  const { getDocs } = useFirebaseStore();
-  const [visitBookList, setVisitBookList] = useState<IVisitBook[]>([]);
+  const { firebaseGetDocsRealtime } = useFirebaseStore();
+  const [visitBookList, setVisitBookList] = useState<IVisitorBook[]>([]);
   useEffect(() => {
     refreshVisitorBooks();
   }, []);
 
   const refreshVisitorBooks = async () => {
-    getDocs(STORE_PATH, orderBy("createdAt", "desc"), null, (snapshot) => {
+    firebaseGetDocsRealtime(STORE_PATH, orderBy("createdAt", "desc"), null, (snapshot) => {
       if (!snapshot) return;
 
-      const bookList: IVisitBook[] = [];
-
+      const bookList: IVisitorBook[] = [];
       snapshot.forEach((doc) => {
         bookList.push({ id: doc.id, ...doc.data() });
       });

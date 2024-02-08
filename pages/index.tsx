@@ -1,11 +1,9 @@
-import MainTitle from "@/src/components/units/home/mainTitle/mainTitle.index";
-import Work from "@/src/components/units/home/work/work.index";
+import Home from "@/src/components/units/home/Home.index";
 
-export default function Home() {
+export default function HomePage() {
   return (
     <>
-      <MainTitle />
-      <Work />
+      <Home />
     </>
   );
 }

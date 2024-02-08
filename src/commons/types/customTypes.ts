@@ -1,4 +1,4 @@
-export interface IVisitBook {
+export interface IVisitorBook {
   id: string;
   writer?: string;
   password?: string;
@@ -7,9 +7,8 @@ export interface IVisitBook {
   updatedAt?: string;
   deletedAt?: string;
 }
-export interface IVisitBookWriteFormData {
+export interface IVisitorBookWriteFormData {
   writer: string;
-  title: string;
   password?: string;
   contents: string;
 }
