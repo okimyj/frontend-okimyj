@@ -6,7 +6,7 @@ export const Wrapper = styled.main`
   min-height: calc(100vh - ${rem(HEADER_HEIGHT)} - ${rem(FOOTER_HEIGHT)});
   margin: auto;
   margin-top: ${rem(HEADER_HEIGHT)};
-  padding: ${rem(20)};
+  padding: 0 ${rem(20)};
   display: flex;
   flex-direction: column;
 `;

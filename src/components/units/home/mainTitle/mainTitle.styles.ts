@@ -3,17 +3,15 @@ import { theme } from "@/src/commons/styles/theme";
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
   z-index: -1;
 `;
 export const TitleImageWrapper = styled.div`
   position: relative;
   max-height: 100vh;
+  width: fit-content;
   height: fit-content;
-  border: 1px solid red;
-  img {
-    width: 100%;
-    height: auto;
-  }
 `;
 
 export const GradientRect = styled.div`
@@ -37,6 +35,7 @@ export const GradientRect = styled.div`
 
 export const TitleLogo = styled.div`
   position: absolute;
+  left: ${rem(20)};
   bottom: ${rem(20)};
   font-size: ${theme.fontSizes.title};
   font-weight: bold;
