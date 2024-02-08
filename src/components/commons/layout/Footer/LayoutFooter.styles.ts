@@ -1,10 +1,11 @@
-import { rem } from "@/src/components/commons/styles/common";
-import { theme } from "@/src/components/commons/styles/theme";
+import { FOOTER_HEIGHT, rem } from "@/src/commons/styles/common";
+import { theme } from "@/src/commons/styles/theme";
 import styled from "@emotion/styled";
 export const Wrapper = styled.footer`
+  position: relative;
+  bottom: 0;
   width: 100%;
-  margin-top: 50px;
+  height: ${rem(FOOTER_HEIGHT)};
   opacity: 0.8;
   box-shadow: ${theme.colors.tertiary} 0px ${rem(-1)} ${rem(8)};
-  background-color: ${theme.colors.secondary};
 `;

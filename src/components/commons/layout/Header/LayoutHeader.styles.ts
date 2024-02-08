@@ -1,12 +1,16 @@
-import { HEADER_HEIGHT, rem } from "@/src/components/commons/styles/common";
-import { SCREEN_WIDTH_MAX } from "@/src/components/commons/styles/common";
-import { theme } from "@/src/components/commons/styles/theme";
+import { HEADER_HEIGHT, rem } from "@/src/commons/styles/common";
+import { SCREEN_WIDTH_MAX } from "@/src/commons/styles/common";
+import { theme } from "@/src/commons/styles/theme";
 import styled from "@emotion/styled";
 export const Wrapper = styled.header`
   position: fixed;
   top: 0;
   width: 100vw;
   height: ${rem(HEADER_HEIGHT)};
+  @media only screen and (min-aspect-ratio: 360/740) {
+    height: calc(${rem(HEADER_HEIGHT)} / 2);
+  }
+
   padding: ${rem(30)};
   display: flex;
   justify-content: center;

@@ -39,7 +39,7 @@ export const theme: Theme = {
     secondary: "#DFD5C4",
     tertiary: "#BDAA89",
     background: "#CFC1A8",
-    list_background: "#FFFFFF",
+    list_background: "#FFFFFF90",
     // background: "#ff0000",
   },
 };

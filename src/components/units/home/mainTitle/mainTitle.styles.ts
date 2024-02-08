@@ -1,5 +1,5 @@
-import { rem } from "@/src/components/commons/styles/common";
-import { theme } from "@/src/components/commons/styles/theme";
+import { rem } from "@/src/commons/styles/common";
+import { theme } from "@/src/commons/styles/theme";
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
