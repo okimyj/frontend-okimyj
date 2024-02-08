@@ -9,6 +9,7 @@ export const TitleImageWrapper = styled.div`
   position: relative;
   max-height: 100vh;
   height: fit-content;
+  border: 1px solid red;
   img {
     width: 100%;
     height: auto;
