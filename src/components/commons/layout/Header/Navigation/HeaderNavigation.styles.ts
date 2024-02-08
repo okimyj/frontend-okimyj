@@ -18,6 +18,7 @@ export const MenuItem = styled.button`
   border: none;
   font-weight: bold;
   font-size: ${theme.fontSizes.l};
+  cursor: pointer;
   opacity: 0.4;
   :hover {
     opacity: 0.8;

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Wrapper, TitleImageWrapper, GradientRect, TitleLogo } from "./mainTitle.styles";
+import { useRouter } from "next/router";
 
 export default function MainTitle() {
   return (

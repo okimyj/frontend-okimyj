@@ -4,11 +4,13 @@ import { useRouter } from "next/router";
 
 const LayoutHeader = () => {
   const router = useRouter();
-
+  const onClickLogo = () => {
+    router.push("/");
+  };
   return (
     <Wrapper>
       <InnerWrapper>
-        <HeadLogo>OKIMYJ Portfolio</HeadLogo>
+        <HeadLogo onClick={onClickLogo}>OKIMYJ Portfolio</HeadLogo>
         <HeaderNavigation />
       </InnerWrapper>
     </Wrapper>

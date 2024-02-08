@@ -29,10 +29,7 @@ export const HeadLogo = styled.button`
   background-color: transparent;
   border: none;
   font-weight: bold;
-
+  cursor: pointer;
   font-size: ${theme.fontSizes.l};
-  opacity: 0.4;
-  :hover {
-    opacity: 0.8;
-  }
+  opacity: 0.8;
 `;
