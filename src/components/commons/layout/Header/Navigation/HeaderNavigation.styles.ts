@@ -5,24 +5,28 @@ export const Wrapper = styled.nav`
   display: flex;
   /* background-color: ${theme.colors.primary}; */
 `;
-export const MenuItemWrapper = styled.div`
+export const NavItemWrapper = styled.div`
   @media only screen and (max-width: 640px) {
     display: flex;
   }
   display: flex;
   flex-direction: row;
 `;
-export const MenuItem = styled.button`
+export const NavItem = styled.button`
   margin-left: ${rem(30)};
   background-color: transparent;
   border: none;
   font-weight: bold;
-  font-size: ${theme.fontSizes.l};
+  font-size: ${theme.fontSizes.header_menu};
+  color: ${theme.colors.primary};
   cursor: pointer;
   opacity: 0.4;
   :hover {
-    opacity: 0.8;
+    opacity: 0.6;
   }
+`;
+export const MenuItemActive = styled(NavItem)`
+  opacity: 1;
 `;
 export const HamburgerButton = styled.button`
   @media only screen and (max-width: 640px) {

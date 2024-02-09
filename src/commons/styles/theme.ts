@@ -4,12 +4,16 @@ import { rem } from "./common";
 declare module "@emotion/react" {
   export interface Theme {
     fontSizes: {
+      xxs: string;
       xs: string;
       s: string;
       m: string;
       l: string;
       xl: string;
-      title: string;
+      header_logo: string;
+      header_menu: string;
+
+      main_title: string;
     };
     colors: ColorTheme;
   }
@@ -25,12 +29,15 @@ interface ColorTheme {
 }
 export const theme: Theme = {
   fontSizes: {
-    xs: rem(10),
-    s: rem(12),
+    xxs: rem(10),
+    xs: rem(12),
+    s: rem(14),
     m: rem(16),
-    l: rem(20),
+    l: rem(18),
     xl: rem(24),
-    title: rem(60),
+    header_logo: rem(20),
+    header_menu: rem(20),
+    main_title: rem(60),
   },
   colors: {
     black: "#000",

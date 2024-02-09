@@ -10,13 +10,20 @@ import {
   QuerySnapshot,
   QueryOrderByConstraint,
   QueryCompositeFilterConstraint,
+  updateDoc,
+  doc,
 } from "firebase/firestore";
 import firebaseApp from "../../libraries/firebase/firebaseApp";
 
 const useFirebaseStore = () => {
   const getCollection = (storePath: string) => collection(getFirestore(firebaseApp), storePath);
+  const getDoc = (storePath: string, collectionPath: string) =>
+    doc(getFirestore(firebaseApp), storePath, collectionPath);
   const firebaseAddDoc = async (storePath: string, data: WithFieldValue<DocumentData>) => {
     return await addDoc(getCollection(storePath), data);
+  };
+  const firebaseUpdateDoc = async (storePath: string, collectionPath: string, data: WithFieldValue<DocumentData>) => {
+    return await updateDoc(getDoc(storePath, collectionPath), data);
   };
 
   const firebaseGetDocsRealtime = async (
@@ -55,6 +62,6 @@ const useFirebaseStore = () => {
     }
   };
 
-  return { getCollection, firebaseAddDoc, firebaseGetDocs, firebaseGetDocsRealtime };
+  return { getCollection, firebaseAddDoc, firebaseUpdateDoc, firebaseGetDocs, firebaseGetDocsRealtime };
 };
 export default useFirebaseStore;

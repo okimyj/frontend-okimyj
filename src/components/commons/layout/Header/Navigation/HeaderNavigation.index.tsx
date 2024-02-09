@@ -1,28 +1,30 @@
 import { useState } from "react";
-import { HamburgerButton, MenuItem, MenuItemWrapper, Wrapper } from "./HeaderNavigation.styles";
+import { HamburgerButton, NavItem, MenuItemActive, NavItemWrapper, Wrapper } from "./HeaderNavigation.styles";
 import Hamburger_MD from "@/public/icons/Hamburger_MD.svg";
 import { useRouter } from "next/router";
 const MENUS = [
-  { name: "About Me", page: "" },
-  { name: "Work", page: "" },
-  { name: "Visitor Books", page: "/visitorBooks" },
-  { name: "Marie's Gallery", page: "" },
+  { name: "Home", path: "/" },
+  { name: "Visitor Books", path: "/visitorBooks" },
+  { name: "Marie's Gallery", path: "" },
 ];
 const HeaderNavigation = () => {
-  const [isMenuVisible, setIsMenuVisible] = useState<boolean>(false);
   const router = useRouter();
   const onClickMenu = (page: string) => () => {
     if (page) router.push(page);
   };
   return (
     <Wrapper>
-      <MenuItemWrapper>
-        {MENUS.map((el, index) => (
-          <MenuItem onClick={onClickMenu(el.page)} key={index}>
-            {el.name}
-          </MenuItem>
-        ))}
-      </MenuItemWrapper>
+      <NavItemWrapper>
+        {MENUS.map((el, index) =>
+          router.pathname === el.path ? (
+            <MenuItemActive key={index}>{el.name}</MenuItemActive>
+          ) : (
+            <NavItem onClick={onClickMenu(el.path)} key={index}>
+              {el.name}
+            </NavItem>
+          )
+        )}
+      </NavItemWrapper>
       <HamburgerButton>
         <Hamburger_MD />
       </HamburgerButton>

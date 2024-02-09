@@ -5,7 +5,7 @@ const STORE_PATH = "visitBook";
 const useVisitorBookWrite = () => {
   const { firebaseAddDoc } = useFirebaseStore();
 
-  const onClickSubmit = (callback?: () => void) => (data: IVisitorBookWriteFormData) => {
+  const handleSubmit = (callback?: () => void) => (data: IVisitorBookWriteFormData) => {
     if (typeof window !== "undefined") {
       firebaseAddDoc(STORE_PATH, {
         ...data,
@@ -15,6 +15,6 @@ const useVisitorBookWrite = () => {
       });
     }
   };
-  return { onClickSubmit };
+  return { handleSubmit };
 };
 export default useVisitorBookWrite;

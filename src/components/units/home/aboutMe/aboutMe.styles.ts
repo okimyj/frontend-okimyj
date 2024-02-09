@@ -7,8 +7,15 @@ export const Wrapper = styled.section`
 `;
 
 export const Headline = styled.h1``;
-export const Pilcrow = styled.p`
-  text-indent: ${rem(5)};
+export const IntroBase = styled.p`
   word-break: keep-all;
   line-height: 1.8;
+`;
+
+export const ClientIntro = styled(IntroBase)`
+  text-indent: ${rem(10)};
+  font-size: ${theme.fontSizes.m};
+`;
+export const FrontendIntro = styled(IntroBase)`
+  font-size: ${theme.fontSizes.l};
 `;

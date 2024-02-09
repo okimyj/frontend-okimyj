@@ -37,11 +37,23 @@ export const TitleLogo = styled.div`
   position: absolute;
   left: ${rem(20)};
   bottom: ${rem(20)};
-  font-size: ${theme.fontSizes.title};
+  font-size: ${theme.fontSizes.main_title};
   font-weight: bold;
   color: ${theme.colors.primary};
   z-index: 1;
+  animation: fadeIn 1s;
+  font-display: block;
+  @keyframes fadeIn {
+    from {
+      bottom: ${rem(-20)};
+      opacity: 0;
+    }
+    to {
+      bottom: ${rem(20)};
+      opacity: 1;
+    }
+  }
   @media only screen and (max-width: 640px) {
-    font-size: calc(${theme.fontSizes.title} / 2);
+    font-size: calc(${theme.fontSizes.main_title} / 2);
   }
 `;

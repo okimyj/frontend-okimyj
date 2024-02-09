@@ -1,21 +1,14 @@
 import useVisitorBooks from "@/src/commons/hooks/customs/useVisitorBooks";
-import { BookWrapper, Writer, Wrapper, Contents } from "./VisitorBookList.styles";
-import DOMPurify from "dompurify";
+import VisitorBookItem from "./item/VisitorBookItem.index";
+
 const VisitorBookList = () => {
   const { visitBookList } = useVisitorBooks();
   return (
-    <Wrapper>
+    <section>
       {visitBookList?.map((data) => (
-        <BookWrapper key={data.id}>
-          <Writer>writer : {data.writer}</Writer>
-          <Contents
-            dangerouslySetInnerHTML={{
-              __html: DOMPurify.sanitize(data?.contents ?? ""),
-            }}
-          ></Contents>
-        </BookWrapper>
+        <VisitorBookItem data={data} />
       ))}
-    </Wrapper>
+    </section>
   );
 };
 export default VisitorBookList;
