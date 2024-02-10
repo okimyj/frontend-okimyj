@@ -3,6 +3,7 @@ import { HamburgerButton, NavItem, MenuItemActive, NavItemWrapper, Wrapper } fro
 import Hamburger_MD from "@/public/icons/Hamburger_MD.svg";
 import { useRouter } from "next/router";
 import useWindowSize from "@/src/commons/hooks/customs/useWindowSize";
+import { SHOW_NAVIGATION_WIDTH_MIN as CAN_SHOW_NAVIGATION_WIDTH_MIN } from "@/src/commons/constants";
 const MENUS = [
   { name: "Home", path: "/" },
   { name: "Visitor Books", path: "/visitorBooks" },
@@ -16,7 +17,7 @@ const HeaderNavigation = () => {
   };
   return (
     <Wrapper>
-      {windowSize.width > 700 ? (
+      {windowSize.width > CAN_SHOW_NAVIGATION_WIDTH_MIN ? (
         <NavItemWrapper>
           {MENUS.map((el, index) =>
             router.pathname === el.path ? (

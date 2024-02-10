@@ -10,7 +10,10 @@ export const NavItemWrapper = styled.div`
   flex-direction: row;
 `;
 export const NavItem = styled.button`
-  margin-left: ${rem(30)};
+  &:not(:first-of-type) {
+    margin-left: ${rem(30)};
+  }
+
   background-color: transparent;
   border: none;
   font-weight: bold;
