@@ -6,13 +6,12 @@ export const Wrapper = styled.nav`
   position: fixed;
   max-width: calc(${rem(SCREEN_WIDTH_MAX)} - ${rem(25)});
   width: calc(100% - ${rem(55)});
-  top: ${rem(HEADER_HEIGHT)};
+  top: calc(${rem(HEADER_HEIGHT)} + ${rem(20)});
   display: flex;
   justify-content: flex-end;
   font-size: ${theme.fontSizes.l};
   font-weight: bold;
 `;
-export const NavWrapper = styled.div``;
 
 export const NavItem = styled.a`
   color: ${theme.colors.primary};

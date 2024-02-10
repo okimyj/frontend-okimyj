@@ -1,5 +1,5 @@
-import { Ref, useEffect, useState } from "react";
-import { NavItem, NavWrapper, Wrapper } from "./Navigation.styles";
+import { useEffect, useState } from "react";
+import { NavItem, Wrapper } from "./Navigation.styles";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import ScrollToPlugin from "gsap/dist/ScrollToPlugin";

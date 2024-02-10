@@ -7,10 +7,6 @@ export const Wrapper = styled.header`
   top: 0;
   width: 100%;
   height: ${rem(HEADER_HEIGHT)};
-  @media only screen and (min-aspect-ratio: 360/740) {
-    height: calc(${rem(HEADER_HEIGHT)} / 2);
-  }
-
   padding: ${rem(30)};
   display: flex;
   justify-content: center;
