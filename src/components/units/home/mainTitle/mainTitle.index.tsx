@@ -10,6 +10,7 @@ export default function MainTitle() {
   const [imageHeight, setImageHeight] = useState(ORIGIN_IMAGE_HEIGHT);
   const [imageWidth, setImageWidth] = useState(ORIGIN_IMAGE_WIDTH);
   useEffect(() => {
+    console.log("windowSize : ", windowSize);
     let height = ORIGIN_IMAGE_HEIGHT;
     let width = ORIGIN_IMAGE_WIDTH;
     if (windowSize.height < windowSize.width) {

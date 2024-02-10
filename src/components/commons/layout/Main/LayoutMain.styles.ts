@@ -9,4 +9,5 @@ export const Wrapper = styled.main`
   padding: 0 ${rem(20)};
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
 `;

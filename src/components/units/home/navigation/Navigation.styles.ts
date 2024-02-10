@@ -3,12 +3,13 @@ import { theme } from "@/src/commons/styles/theme";
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.nav`
-  width: 100%;
+  position: fixed;
+  right: 0;
+  border: 1px solid red;
   top: ${rem(HEADER_HEIGHT)};
 `;
 export const NavWrapper = styled.div`
   display: flex;
-  justify-content: flex-end;
   color: ${theme.colors.primary};
   font-size: ${theme.fontSizes.l};
   font-weight: bold;
@@ -16,7 +17,7 @@ export const NavWrapper = styled.div`
 
 export const NavItem = styled.li`
   list-style: none;
-  margin-left: ${rem(20)};
+  margin-right: ${rem(20)};
   opacity: 0.5;
 `;
 export const NavItemActive = styled(NavItem)`

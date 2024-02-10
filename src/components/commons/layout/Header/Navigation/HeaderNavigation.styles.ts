@@ -6,9 +6,6 @@ export const Wrapper = styled.nav`
   /* background-color: ${theme.colors.primary}; */
 `;
 export const NavItemWrapper = styled.div`
-  @media only screen and (max-width: 640px) {
-    display: flex;
-  }
   display: flex;
   flex-direction: row;
 `;
@@ -29,12 +26,9 @@ export const MenuItemActive = styled(NavItem)`
   opacity: 1;
 `;
 export const HamburgerButton = styled.button`
-  @media only screen and (max-width: 640px) {
-    width: ${rem(50)};
-    height: ${rem(80)};
-    background-color: transparent;
-    border: none;
-    display: block;
-  }
-  display: none;
+  width: ${rem(50)};
+  height: ${rem(80)};
+  background-color: transparent;
+  color: ${theme.colors.primary};
+  border: none;
 `;

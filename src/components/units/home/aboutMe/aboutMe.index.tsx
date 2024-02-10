@@ -1,3 +1,4 @@
+import React from "react";
 import { ClientIntro, FrontendIntro, Headline, IntroBase, Wrapper } from "./aboutMe.styles";
 
 const AboutMe = () => {
@@ -21,4 +22,4 @@ const AboutMe = () => {
     </Wrapper>
   );
 };
-export default AboutMe;
+export default React.forwardRef(AboutMe);

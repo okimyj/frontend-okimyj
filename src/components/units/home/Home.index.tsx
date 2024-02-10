@@ -5,14 +5,20 @@ import Navigation from "./navigation/Navigation.index";
 import Work from "./work/work.index";
 
 const Home = () => {
-  const aboutMeRef = useRef();
-  const workRef = useRef();
+  const aboutMeRef = useRef(null);
+  const workRef = useRef(null);
   return (
     <>
-      <Navigation activeIndex={1} />
+      <Navigation
+        activeIndex={1}
+        menus={[
+          { name: "About Me", ref: aboutMeRef },
+          { name: "Work", ref: workRef },
+        ]}
+      />
       <MainTitle />
-      <AboutMe />
-      <Work />
+      <AboutMe ref={aboutMeRef} />
+      <Work ref={workRef} />
     </>
   );
 };

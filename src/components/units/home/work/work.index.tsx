@@ -1,3 +1,4 @@
+import React from "react";
 import WorkCard from "./card/workCard.index";
 import { WORK_CARD_DATA } from "./work.data";
 const Work = () => {
@@ -9,4 +10,4 @@ const Work = () => {
     </div>
   );
 };
-export default Work;
+export default React.forwardRef(Work);
