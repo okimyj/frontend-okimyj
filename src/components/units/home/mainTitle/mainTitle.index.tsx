@@ -5,7 +5,7 @@ import { HEADER_HEIGHT } from "@/src/commons/styles/common";
 import useWindowSize from "@/src/commons/hooks/customs/useWindowSize";
 const ORIGIN_IMAGE_WIDTH = 1200;
 const ORIGIN_IMAGE_HEIGHT = 1000;
-export default function MainTitle() {
+const MainTitle = () => {
   const windowSize = useWindowSize();
   const [imageHeight, setImageHeight] = useState(ORIGIN_IMAGE_HEIGHT);
   const [imageWidth, setImageWidth] = useState(ORIGIN_IMAGE_WIDTH);
@@ -43,4 +43,5 @@ export default function MainTitle() {
       </TitleImageWrapper>
     </Wrapper>
   );
-}
+};
+export default MainTitle;

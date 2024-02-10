@@ -12,13 +12,13 @@ const Home = () => {
       <Navigation
         activeIndex={1}
         menus={[
-          { name: "About Me", ref: aboutMeRef },
-          { name: "Work", ref: workRef },
+          { name: "About Me", id: "aboutMe", ref: aboutMeRef },
+          { name: "Work", id: "work", ref: workRef },
         ]}
       />
       <MainTitle />
-      <AboutMe ref={aboutMeRef} />
-      <Work ref={workRef} />
+      <AboutMe id={"aboutMe"} ref={aboutMeRef} />
+      <Work id={"work"} ref={workRef} />
     </>
   );
 };

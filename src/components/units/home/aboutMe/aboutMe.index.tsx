@@ -1,9 +1,9 @@
 import React from "react";
-import { ClientIntro, FrontendIntro, Headline, IntroBase, Wrapper } from "./aboutMe.styles";
+import { ClientIntro, FrontendIntro, Headline, Wrapper } from "./aboutMe.styles";
 
-const AboutMe = () => {
+const AboutMe = ({ id }: { id: string }) => {
   return (
-    <Wrapper>
+    <Wrapper id={id}>
       <Headline>2년차 Frontend, </Headline>
       <Headline>10년차 모바일 게임 클라이언트 개발자 입니다.</Headline>
       <ClientIntro>
