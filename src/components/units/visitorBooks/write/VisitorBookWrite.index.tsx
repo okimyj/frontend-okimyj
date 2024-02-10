@@ -7,26 +7,19 @@ import styled from "@emotion/styled";
 const ReactQuill = dynamic(async () => await import("react-quill"), { ssr: false });
 import "react-quill/dist/quill.snow.css";
 import { useEffect, useState } from "react";
-import useVisitorBooks from "@/src/commons/hooks/customs/useVisitorBooks";
+import useFirestoreMutation from "@/src/commons/hooks/customs/useFirestoreMutation";
 import Input from "@/src/components/commons/form/Input/Input.index";
 import Button from "@/src/components/commons/form/Button/Button.index";
-interface IVisitorBookWriteProps {
-  data?: IVisitorBook;
-}
-const VisitorBookWrite = (props: IVisitorBookWriteProps) => {
-  const { addVisitorBook, updateVisitorBook } = useVisitorBooks();
-  const { register, reset, setValue, trigger, handleSubmit } = useForm<IVisitorBookWriteFormData>();
+import { STORE_PATH_VISITOR_BOOK } from "@/src/commons/constants";
+const VisitorBookWrite = () => {
+  const { addDoc } = useFirestoreMutation(STORE_PATH_VISITOR_BOOK);
+  const { register, reset, setValue, trigger, handleSubmit, getValues } = useForm<IVisitorBookWriteFormData>();
   const [contents, setContents] = useState<string>("");
-  useEffect(() => {
-    if (props) {
-      setValue("writer", props.data?.writer ?? "");
-      setValue("password", props.data?.password ?? "");
-      setContents(props.data?.contents ?? "");
-    }
-  }, []);
+
   useEffect(() => {
     setValue("contents", contents === "<p><br></p>" ? "" : contents);
-    void trigger("contents");
+    trigger("contents");
+    console.log("getValues : ", getValues());
   }, [contents]);
 
   const onChangeContents = (value: string): void => {
@@ -39,12 +32,10 @@ const VisitorBookWrite = (props: IVisitorBookWriteProps) => {
   };
 
   return (
-    <FormWrapper
-      onSubmit={handleSubmit(props.data ? updateVisitorBook(props.data.id, resetFields) : addVisitorBook(resetFields))}
-    >
+    <FormWrapper onSubmit={handleSubmit(addDoc(resetFields))}>
       <InputWrapper>
-        <Input title={"writer"} {...register("writer")} />
-        <Input title={"password"} type="password" {...register("password")} />
+        <Input title={"writer"} register={register("writer")} />
+        <Input title={"password"} type="password" register={register("password")} />
       </InputWrapper>
       <ReactQuill onChange={onChangeContents} value={contents}></ReactQuill>
       <Button>Submit</Button>
@@ -62,7 +53,7 @@ const FormWrapper = styled.form`
 `;
 const InputWrapper = styled.div`
   display: flex;
-  div:not(:first-child) {
+  div:not(:first-of-type) {
     margin-left: ${rem(10)};
   }
 `;

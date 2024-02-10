@@ -1,5 +1,8 @@
-export interface IVisitorBook {
+import { DocumentData } from "firebase/firestore";
+export interface ICustomDocumentData extends DocumentData {
   id: string;
+}
+export interface IVisitorBook extends ICustomDocumentData {
   writer?: string;
   password?: string;
   contents?: string;

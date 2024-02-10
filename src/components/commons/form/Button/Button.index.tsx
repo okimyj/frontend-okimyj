@@ -1,9 +1,12 @@
 import { rem } from "@/src/commons/styles/common";
 import { theme } from "@/src/commons/styles/theme";
 import styled from "@emotion/styled";
-
-const Button = ({ children, ...rest }: { children: React.ReactNode }) => {
-  return <StyledButton {...rest}>{children}</StyledButton>;
+import { ButtonHTMLAttributes } from "react";
+interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  children: React.ReactNode;
+}
+const Button = (props: IButtonProps) => {
+  return <StyledButton {...props}>{props.children}</StyledButton>;
 };
 
 export default Button;

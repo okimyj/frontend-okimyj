@@ -12,10 +12,11 @@ import {
   QueryCompositeFilterConstraint,
   updateDoc,
   doc,
+  deleteDoc,
 } from "firebase/firestore";
 import firebaseApp from "../../libraries/firebase/firebaseApp";
 
-const useFirebaseStore = () => {
+const useFirestore = () => {
   const getCollection = (storePath: string) => collection(getFirestore(firebaseApp), storePath);
   const getDoc = (storePath: string, collectionPath: string) =>
     doc(getFirestore(firebaseApp), storePath, collectionPath);
@@ -24,6 +25,9 @@ const useFirebaseStore = () => {
   };
   const firebaseUpdateDoc = async (storePath: string, collectionPath: string, data: WithFieldValue<DocumentData>) => {
     return await updateDoc(getDoc(storePath, collectionPath), data);
+  };
+  const firebaseDeleteDoc = async (storePath: string, collectionPath: string) => {
+    return await deleteDoc(getDoc(storePath, collectionPath));
   };
 
   const firebaseGetDocsRealtime = async (
@@ -62,6 +66,13 @@ const useFirebaseStore = () => {
     }
   };
 
-  return { getCollection, firebaseAddDoc, firebaseUpdateDoc, firebaseGetDocs, firebaseGetDocsRealtime };
+  return {
+    getCollection,
+    firebaseAddDoc,
+    firebaseUpdateDoc,
+    firebaseDeleteDoc,
+    firebaseGetDocs,
+    firebaseGetDocsRealtime,
+  };
 };
-export default useFirebaseStore;
+export default useFirestore;
