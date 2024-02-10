@@ -10,4 +10,4 @@ const Work = ({ id }: { id: string }) => {
     </div>
   );
 };
-export default React.forwardRef(Work);
+export default Work;

@@ -1,9 +1,9 @@
 import React from "react";
 import { ClientIntro, FrontendIntro, Headline, Wrapper } from "./aboutMe.styles";
 
-const AboutMe = ({ id }: { id: string }) => {
+const AboutMe = () => {
   return (
-    <Wrapper id={id}>
+    <Wrapper>
       <Headline>2년차 Frontend, </Headline>
       <Headline>10년차 모바일 게임 클라이언트 개발자 입니다.</Headline>
       <ClientIntro>
@@ -22,4 +22,4 @@ const AboutMe = ({ id }: { id: string }) => {
     </Wrapper>
   );
 };
-export default React.forwardRef(AboutMe);
+export default AboutMe;

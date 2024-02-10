@@ -9,7 +9,6 @@ if (typeof window !== "undefined") {
 interface INaviMenu {
   name: string;
   id: string;
-  ref: Ref<React.JSX.Element>;
 }
 interface INavigationProps {
   activeIndex: number;
@@ -37,9 +36,7 @@ const Navigation = (props: INavigationProps) => {
         });
       a.addEventListener("click", function (e) {
         e.preventDefault();
-        console.log("hi : ", linkST);
-
-        gsap.to(window, { duration: 1, scrollTo: linkST.start, overwrite: "auto" });
+        gsap.to(window, { duration: 0.5, scrollTo: linkST.start, overwrite: "auto" });
       });
     });
   }, [links]);

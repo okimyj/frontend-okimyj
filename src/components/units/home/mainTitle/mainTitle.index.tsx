@@ -3,9 +3,10 @@ import { Wrapper, TitleImageWrapper, GradientRect, TitleLogo } from "./mainTitle
 import { useEffect, useState } from "react";
 import { HEADER_HEIGHT } from "@/src/commons/styles/common";
 import useWindowSize from "@/src/commons/hooks/customs/useWindowSize";
+import AboutMe from "./aboutMe/aboutMe.index";
 const ORIGIN_IMAGE_WIDTH = 1200;
 const ORIGIN_IMAGE_HEIGHT = 1000;
-const MainTitle = () => {
+const MainTitle = ({ id }: { id: string }) => {
   const windowSize = useWindowSize();
   const [imageHeight, setImageHeight] = useState(ORIGIN_IMAGE_HEIGHT);
   const [imageWidth, setImageWidth] = useState(ORIGIN_IMAGE_WIDTH);
@@ -25,7 +26,7 @@ const MainTitle = () => {
   }, [windowSize]);
 
   return (
-    <Wrapper>
+    <Wrapper id={id}>
       <TitleImageWrapper>
         <GradientRect></GradientRect>
         <Image
@@ -41,6 +42,7 @@ const MainTitle = () => {
           FrontEnd Developer
         </TitleLogo>
       </TitleImageWrapper>
+      <AboutMe />
     </Wrapper>
   );
 };
