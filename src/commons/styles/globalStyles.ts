@@ -16,6 +16,10 @@ export const globalStyles = css`
     font-family: "Gowun Dodum";
     margin: 0;
     box-sizing: border-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-use-select: none;
+    user-select: none;
   }
   body {
     background-color: ${theme.colors.background};

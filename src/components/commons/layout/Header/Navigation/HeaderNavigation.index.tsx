@@ -13,11 +13,11 @@ const MENUS = [
 const HeaderNavigation = () => {
   const router = useRouter();
   const windowSize = useWindowSize();
-  const [isDropdownMenuShow, setIsDropdownMenuShow] = useState<boolean>(false);
+  const dropdownMenuRef = useRef<HTMLDivElement>(null);
   const onClickMenu = (page: string) => () => {
     if (page) {
       router.push(page).then(() => {
-        setIsDropdownMenuShow(false);
+        dropdownMenuRef.current?.classList.remove("open");
       });
     }
   };
@@ -27,9 +27,9 @@ const HeaderNavigation = () => {
         {el.name}
       </NavItem>
     ));
-  }, []);
+  }, [router]);
   const onClickHamburger = () => {
-    setIsDropdownMenuShow(!isDropdownMenuShow);
+    dropdownMenuRef.current?.classList.toggle("open");
   };
   return (
     <Wrapper>
@@ -40,7 +40,7 @@ const HeaderNavigation = () => {
           <Hamburger_MD />
         </HamburgerButton>
       )}
-      {isDropdownMenuShow && <DropdownNavWrapper>{NavItems}</DropdownNavWrapper>}
+      {<DropdownNavWrapper ref={dropdownMenuRef}>{NavItems}</DropdownNavWrapper>}
     </Wrapper>
   );
 };

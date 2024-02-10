@@ -17,6 +17,7 @@ export const NavItem = styled.button`
   border: none;
   font-weight: bold;
   font-size: ${theme.fontSizes.header_menu};
+  white-space: nowrap;
   color: ${theme.colors.primary};
   cursor: pointer;
   opacity: 0.4;
@@ -45,7 +46,22 @@ export const DropdownNavWrapper = styled.div`
   align-items: flex-end;
   background-color: rgba(255, 255, 255, 0.9);
   border-bottom-left-radius: ${rem(20)};
+  transition: opacity 0.5s, width 1s;
+  opacity: 0;
+  width: 0;
   button:not(:first-of-type) {
     margin-top: ${rem(10)};
+  }
+  button {
+    pointer-events: none;
+  }
+
+  &.open {
+    visibility: visible;
+    width: ${rem(200)};
+    opacity: 1;
+    button {
+      pointer-events: auto;
+    }
   }
 `;
