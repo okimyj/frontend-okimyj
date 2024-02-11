@@ -13,9 +13,8 @@ import SkillIcon from "../../../skillIcon/skillIcon.index";
 import styles from "./workCard.styles.module.scss";
 
 const WorkCard = (props: IWorkCard) => {
-  const [isProjectsFolded, setIsProjectsFolded] = useState<boolean>(false);
   return (
-    <Wrapper className={styles.workWrapper}>
+    <Wrapper className={styles.workWrapper} open>
       <WorkInfoSummary>
         <WorkInfoWrapper>
           <WorkInfoTitle>Company</WorkInfoTitle>
@@ -38,23 +37,21 @@ const WorkCard = (props: IWorkCard) => {
       {props.projects && (
         <ProjectDetailWrapper>
           <ProjectsSummary>Projects</ProjectsSummary>
-          {props.projects &&
-            !isProjectsFolded &&
-            props.projects.map((el, index) => (
-              <ProjectWrapper key={index}>
-                <li>
-                  {el.name} ({el.period})
-                </li>
-                <li>{el.description}</li>
-                {
-                  <SkillIconsWrapper>
-                    {el.skills.map((skill) => (
-                      <SkillIcon key={skill} name={skill} size={25} />
-                    ))}
-                  </SkillIconsWrapper>
-                }
-              </ProjectWrapper>
-            ))}
+          {props.projects?.map((el, index) => (
+            <ProjectWrapper key={index}>
+              <li>
+                {el.name} ({el.period})
+              </li>
+              <li>{el.description}</li>
+              {
+                <SkillIconsWrapper>
+                  {el.skills.map((skill) => (
+                    <SkillIcon key={skill} name={skill} size={25} />
+                  ))}
+                </SkillIconsWrapper>
+              }
+            </ProjectWrapper>
+          ))}
         </ProjectDetailWrapper>
       )}
     </Wrapper>

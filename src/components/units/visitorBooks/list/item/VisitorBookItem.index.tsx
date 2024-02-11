@@ -8,8 +8,11 @@ import Input from "@/src/components/commons/form/Input/Input.index";
 import styled from "@emotion/styled";
 import DOMPurify from "dompurify";
 import { ChangeEvent, useState } from "react";
-
 import dynamic from "next/dynamic";
+import IconButton from "@/src/components/commons/form/Button/IconButton.index";
+
+import EditIcon from "@/public/icons/icon_edit.svg";
+import DeleteIcon from "@/public/icons/icon_delete.svg";
 const ReactQuill = dynamic(async () => await import("react-quill"), { ssr: false });
 const VisitorBookItem = ({ data }: { data: IVisitorBook }) => {
   const [isEditMode, setIsEditMode] = useState<boolean>(false);
@@ -49,8 +52,12 @@ const VisitorBookItem = ({ data }: { data: IVisitorBook }) => {
           <Button onClick={toggleIsEdit}>취소</Button>
         ) : (
           <ButtonWrapper>
-            <Button onClick={toggleIsEdit}>수정</Button>
-            <Button onClick={onClickDeleteButton}>삭제</Button>
+            <IconButton onClick={toggleIsEdit} color={theme.colors.primary}>
+              <EditIcon width="15" height="15" />
+            </IconButton>
+            <IconButton onClick={onClickDeleteButton} color={theme.colors.primary}>
+              <DeleteIcon width="15" height="15" />
+            </IconButton>
           </ButtonWrapper>
         )}
       </TopWrapper>

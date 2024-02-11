@@ -10,9 +10,8 @@ export const Wrapper = styled.details`
   margin-bottom: ${rem(10)};
   box-shadow: 0 ${rem(20)} ${rem(25)} ${rem(-5)} rgba(0, 0, 0, 0.1),
     0 ${rem(10)} ${rem(10)} ${rem(-5)} rgba(0, 0, 0, 0.04);
-  [open] summary::before {
+  [open] summary:before {
     transform: rotateZ(90deg);
-    display: none;
   }
 `;
 export const WorkInfoSummary = styled.summary`
