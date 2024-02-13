@@ -3,7 +3,7 @@ import { Global, ThemeProvider } from "@emotion/react";
 import { globalStyles } from "../../../commons/styles/globalStyles";
 import { RecoilRoot } from "recoil";
 interface ISettings {
-  children: JSX.Element | JSX.Element[];
+  children: React.ReactNode;
 }
 const Settings = (props: ISettings) => {
   return (

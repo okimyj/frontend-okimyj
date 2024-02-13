@@ -2,7 +2,7 @@ import { FOOTER_HEIGHT, HEADER_HEIGHT, rem } from "@/src/commons/styles/common";
 import { SCREEN_WIDTH_MAX } from "@/src/commons/styles/common";
 import styled from "@emotion/styled";
 interface ILayoutMain {
-  children: JSX.Element | JSX.Element[];
+  children: React.ReactNode;
 }
 const LayoutMain = (props: ILayoutMain) => {
   return <Wrapper>{props.children}</Wrapper>;

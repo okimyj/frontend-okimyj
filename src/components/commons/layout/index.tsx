@@ -3,7 +3,7 @@ import LayoutFooter from "./Footer/LayoutFooter.index";
 import LayoutHeader from "./Header/LayoutHeader.index";
 import LayoutMain from "./Main/LayoutMain.index";
 interface ILayoutProps {
-  children: JSX.Element | JSX.Element[];
+  children: React.ReactNode;
 }
 const Layout = (props: ILayoutProps) => {
   return (
