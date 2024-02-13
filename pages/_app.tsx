@@ -7,6 +7,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <title>OKIMYJ::Frontend Developer</title>
+        <meta name="robots" content="noindex,nofollow" charSet="UTF-8" />
         <meta name="description" content="Frontend Developer Portfolio" />
       </Head>
       <Settings>
