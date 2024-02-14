@@ -1,8 +1,10 @@
+const ReactQuill = dynamic(async () => await import("react-quill"), { ssr: false });
+import dynamic from "next/dynamic";
+import "react-quill/dist/quill.snow.css";
 const Gallery = () => {
-  const onClickTest = () => {};
   return (
     <>
-      <button onClick={onClickTest}>test</button>{" "}
+      <ReactQuill></ReactQuill>
     </>
   );
 };
