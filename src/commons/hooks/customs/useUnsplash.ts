@@ -1,7 +1,8 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { useInView } from "react-intersection-observer";
 // response data 중 필요한 data만 type으로 선언.
-type UnsplashImageType = {
+export type UnsplashImageType = {
   id: string;
   width: number;
   height: number;
@@ -23,23 +24,38 @@ const IMAGE_URL_WIDTH_PATTERN = /\&w=\d*/gm;
 export const IMAGE_SIZE: ImageSizeType = { regular: 1080, small: 400, thumb: 200 };
 
 const useUnsplash = () => {
+  const PER_PAGE = 10;
   const [imageDatas, setImageDatas] = useState<UnsplashImageType[]>([]);
   const [page, setPage] = useState<number>(1); // 추후 페이징 기능 연결.
+  const { ref: inViewRef, inView } = useInView();
+  const [isFetching, setIsFetching] = useState<boolean>();
   const unsplashInstance = axios.create({
-    baseURL: "https://api.unsplash.com/photos/random",
+    baseURL: "https://api.unsplash.com/photos",
     params: {
       client_id: process.env.NEXT_PUBLIC_UNSPLASH_ACCESS_KEY,
     },
   });
   useEffect(() => {
     fetchImageData();
-  }, []);
+  }, [page]);
 
-  const fetchImageData = async () => {
-    const { data } = await unsplashInstance.get<UnsplashImageType[]>("", { params: { count: 20 } });
+  useEffect(() => {
+    if (inView) fetchNextPage();
+  }, [inView, imageDatas]);
+
+  const fetchImageData = useCallback(async () => {
+    if (isFetching) return;
+    setIsFetching(true);
+    const { data } = await unsplashInstance.get<UnsplashImageType[]>("", { params: { page, per_page: PER_PAGE } });
     const newImageDatas = [...imageDatas, ...data.filter((el) => !imageDatas.find((target) => target.id === el.id))];
     setImageDatas(newImageDatas);
-  };
+    setIsFetching(false);
+  }, [page, isFetching]);
+
+  const fetchNextPage = useCallback(() => {
+    if (imageDatas.length % PER_PAGE === 0) setPage(page + 1);
+  }, [inView, imageDatas]);
+
   // 이미지를 눌렀을 때 상세보기 modal 혹은 페이지를 연결해 줄 예정이라 urlKey 별로 사이즈를 가져올 수 있게끔 함수화.
   const getImageSize = (data: UnsplashImageType, urlKey: string) => {
     const url = data.urls[urlKey];
@@ -55,11 +71,7 @@ const useUnsplash = () => {
     }
     return size;
   };
-  // const getImageSize = (data: UnsplashImageType, width: number) => {
-  //   const size = { width, height: data.height };
-  //   size.height *= width / size.width;
-  //   return size;
-  // };
-  return { imageDatas, getImageSize };
+
+  return { imageDatas, getImageSize, inViewRef };
 };
 export default useUnsplash;
