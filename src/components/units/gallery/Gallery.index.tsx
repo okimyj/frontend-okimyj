@@ -44,5 +44,4 @@ const ImageListWrapper = styled.ul<{ columnCount: number }>`
 `;
 const ImageListEndObserver = styled.div`
   height: ${rem(20)};
-  border: 1px solid red;
 `;
