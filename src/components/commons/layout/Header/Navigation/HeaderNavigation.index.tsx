@@ -8,7 +8,7 @@ import { useMemo, useRef, useState } from "react";
 const MENUS = [
   { name: "Home", path: "/" },
   { name: "Visitor Books", path: "/visitorBooks" },
-  { name: "Marie's Gallery", path: "/gallery" },
+  { name: "Gallery", path: "/gallery" },
 ];
 const HeaderNavigation = () => {
   const router = useRouter();
