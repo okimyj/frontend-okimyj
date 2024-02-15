@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { HEADER_HEIGHT } from "@/src/commons/styles/common";
 import useWindowSize from "@/src/commons/hooks/customs/useWindowSize";
 import AboutMe from "./aboutMe/aboutMe.index";
+import MainTitleImage from "@/public/images/main_background.webp";
 const ORIGIN_IMAGE_WIDTH = 1200;
 const ORIGIN_IMAGE_HEIGHT = 1000;
 const MainTitle = ({ id }: { id: string }) => {
@@ -29,7 +30,7 @@ const MainTitle = ({ id }: { id: string }) => {
       <TitleImageWrapper>
         <GradientRect></GradientRect>
         <Image
-          src={"http://okimyj-bucket.s3-website.ap-northeast-2.amazonaws.com/main_background.webp"}
+          src={MainTitleImage || "http://okimyj-bucket.s3-website.ap-northeast-2.amazonaws.com/main_background.webp"}
           alt={"background image in bucket"}
           width={imageWidth}
           height={imageHeight}
