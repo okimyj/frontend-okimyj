@@ -2,7 +2,7 @@ import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 // response data 중 필요한 data만 type으로 선언.
-export type UnsplashImageType = {
+export type UnsplashImageData = {
   id: string;
   width: number;
   height: number;
@@ -25,7 +25,7 @@ export const IMAGE_SIZE: ImageSizeType = { regular: 1080, small: 400, thumb: 200
 
 const useUnsplash = () => {
   const PER_PAGE = 10;
-  const [imageDatas, setImageDatas] = useState<UnsplashImageType[]>([]);
+  const [imageDatas, setImageDatas] = useState<UnsplashImageData[]>([]);
   const [page, setPage] = useState<number>(1); // 추후 페이징 기능 연결.
   const { ref: inViewRef, inView } = useInView();
   const [isFetching, setIsFetching] = useState<boolean>();
@@ -46,7 +46,7 @@ const useUnsplash = () => {
   const fetchImageData = useCallback(async () => {
     if (isFetching) return;
     setIsFetching(true);
-    const { data } = await unsplashInstance.get<UnsplashImageType[]>("", { params: { page, per_page: PER_PAGE } });
+    const { data } = await unsplashInstance.get<UnsplashImageData[]>("", { params: { page, per_page: PER_PAGE } });
     const newImageDatas = [...imageDatas, ...data.filter((el) => !imageDatas.find((target) => target.id === el.id))];
     setImageDatas(newImageDatas);
     setIsFetching(false);
@@ -57,7 +57,7 @@ const useUnsplash = () => {
   }, [inView, imageDatas]);
 
   // 이미지를 눌렀을 때 상세보기 modal 혹은 페이지를 연결해 줄 예정이라 urlKey 별로 사이즈를 가져올 수 있게끔 함수화.
-  const getImageSize = (data: UnsplashImageType, urlKey: string) => {
+  const getImageSize = (data: UnsplashImageData, urlKey: string) => {
     const url = data.urls[urlKey];
     const size = { width: data.width, height: data.height };
     let width = IMAGE_SIZE[urlKey] || data.width;
@@ -71,7 +71,10 @@ const useUnsplash = () => {
     }
     return size;
   };
+  const getImageSizeFixedHeight = (data: UnsplashImageData, height: number) => {
+    return { width: data.width * (height / data.height), height };
+  };
 
-  return { imageDatas, getImageSize, inViewRef };
+  return { imageDatas, getImageSize, getImageSizeFixedHeight, inViewRef };
 };
 export default useUnsplash;

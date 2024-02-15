@@ -5,7 +5,7 @@ import { SCREEN_WIDTH_MAX, SCREEN_WIDTH_MIN, rem } from "@/src/commons/styles/co
 import GalleryItem from "./GalleryItem.index";
 
 const Gallery = () => {
-  const { imageDatas, getImageSize, inViewRef } = useUnsplash();
+  const { imageDatas, getImageSizeFixedHeight, inViewRef } = useUnsplash();
   const windowSize = useWindowSize();
   const galleryWidth = Math.max(Math.min(windowSize.width, SCREEN_WIDTH_MAX), SCREEN_WIDTH_MIN);
   const columnCount = Math.floor(galleryWidth / (IMAGE_SIZE.thumb + 5));
@@ -15,7 +15,7 @@ const Gallery = () => {
         {imageDatas.map((el) => (
           <li key={el.id}>
             {/* 아이템 */}
-            <GalleryItem src={el.urls.thumb} {...getImageSize(el, "thumb")} alt={el.id} />
+            <GalleryItem src={el.urls.thumb} {...getImageSizeFixedHeight(el, 200)} alt={el.id} />
           </li>
         ))}
       </ImageListWrapper>
@@ -26,7 +26,7 @@ const Gallery = () => {
 
 export default Gallery;
 const Wrapper = styled.section`
-  padding: ${rem(10)};
+  padding: ${rem(20)};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -34,10 +34,11 @@ const Wrapper = styled.section`
 const ImageListWrapper = styled.ul<{ columnCount: number }>`
   margin: 0;
   padding: 0;
-  column-count: ${(props) => props.columnCount};
+  display: flex;
+  flex-wrap: wrap;
   column-gap: ${rem(5)};
+  row-gap: ${rem(5)};
   li {
-    float: left;
     list-style: none;
   }
 `;
