@@ -1,0 +1,15 @@
+.wrapper {
+  color: #32ffb9;
+  path {
+    fill-opacity: 0.5;
+    transition: fill-opacity 0.3s ease-in-out;
+  }
+  path:hover {
+    fill-opacity: 1;
+    box-shadow: 5px;
+  }
+}
+// .mouseOver {
+//   fill-opacity: 1;
+//   color: red;
+// }
